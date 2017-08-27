@@ -11,3 +11,5 @@ libxlsxwriter/dev
 libxlsxwriter/docs
 libxlsxwriter/examples
 libxlsxwriter/test
+zlib-1.2.11/*.o
+zlib-1.2.11/*.a

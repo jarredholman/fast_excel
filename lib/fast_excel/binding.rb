@@ -5,11 +5,14 @@ require 'ffi'
 module Libxlsxwriter
   extend FFI::Library
 
-  LIB_FILENAME = if RUBY_PLATFORM =~ /darwin/
-    "libxlsxwriter.dylib"
-  else
-    "libxlsxwriter.so"
-  end
+  LIB_FILENAME = case RUBY_PLATFORM
+                 when /darwin/
+                   "libxlsxwriter.dylib"
+	             when /mingw|mswin/
+                   "libxlsxwriter.dll"
+                 else
+                   "libxlsxwriter.so"
+                 end
 
   ffi_lib File.expand_path("./../../../libxlsxwriter/lib/#{LIB_FILENAME}", __FILE__)
 
